@@ -7,7 +7,7 @@ import { useContext } from "react";
 export default function Meals(){
     const userProgressContext = useContext(UserProgressContext);
 
-const { data, loading, error } = useHttp("http://localhost:3001/meals", {}, []);
+const { data, loading, error } = useHttp("/api/meals", {}, []);
     return(
         <section>
             {loading && <p>Loading...</p>}
@@ -18,7 +18,7 @@ const { data, loading, error } = useHttp("http://localhost:3001/meals", {}, []);
                     <MealsItem key={meal.id} 
                     name ={meal.name}
                     description={meal.description}
-                    image={`http://localhost:3001/${meal.image}`} 
+                    image={`api/${meal.image}`} 
                     />
                 ))}
             </ul>   
