@@ -15,5 +15,6 @@
   "type": "module",
   "dependencies": {
     "express": "^5.1.0"
+    "serverless-http": "^2.x"
   }
 }
