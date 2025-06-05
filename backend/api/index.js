@@ -67,4 +67,17 @@ app.post('/orders', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-export default serverless(app);
+
+app.use((req, res) => { // Middleware to handle requests that do not match any defined routes.
+  if (req.method === 'OPTIONS') {  // Handle preflight requests for CORS
+    // This middleware handles preflight requests for CORS.
+    return res.sendStatus(200);  // Respond with a 200 OK status for OPTIONS requests
+  }
+
+  res.status(404).json({ message:  'Not found' });  // If no matching route is found, respond with a 404 Not Found status and a message.
+});  // End of the 404 route
+
+app.listen(3001  
+, () => console.log('Server is running on port 3001')
+);  // Start the server and listen on port 3001
+// The server listens on port 3001 and logs a message when it starts successfully.
